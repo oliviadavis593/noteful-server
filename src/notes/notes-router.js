@@ -14,6 +14,12 @@ notesRouter
             })
             .catch(next)
     })
+    .post(jsonParser, (req, res, next) => {
+       res.status(201).json({
+           ...req.body,
+           id: 12
+       })
+    })
 
 notesRouter
     .route('/notes/:note_id')

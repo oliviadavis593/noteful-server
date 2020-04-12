@@ -79,5 +79,27 @@ describe('Folders Endpoints', function() {
             })
         })
     })
+
+    describe('POST /folders', () => {
+        it(`creates a folder, responding with 201 and the new folder`, () => {
+            const newFolder = {
+                folder_name: 'Test new folder'
+            }
+            return supertest(app)
+                .post('/folders')
+                .send(newFolder)
+                .expect(201)
+                .expect(res => {
+                    expect(res.body.folder_name).to.eql(newFolder.folder_name)
+                    expect(res.body).to.have.property('id')
+                    expect(res.headers.location).to.eql(`/folders/${res.body.id}`)
+                })
+                .then(res => 
+                    supertest(app)
+                        .get(`/folders/${res.body.id}`)
+                        .expect(res.body)    
+                )
+        })
+    })
 })
 

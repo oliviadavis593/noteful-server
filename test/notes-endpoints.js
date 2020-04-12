@@ -93,4 +93,25 @@ describe('Notes Endpoints', () => {
         })
     })
 
+    describe('POST /notes', () => {
+        it(`creates an note, responding with 201 and the new note`, () => {
+            const newNote = {
+                note_name: 'New note name',
+                content: 'New content',
+                folder_id: 2
+            }
+            return supertest(app)
+                .post('/notes')
+                .send(newNote)
+                .expect(201)
+                .expect(res => {
+                    expect(res.body.note_name).to.eql(newNote.note_name)
+                    expect(res.body.content).to.eql(newNote.content)
+                    expect(res.body).to.have.property('id')
+                    //Add more assertions
+                })
+        })
+            
+    })
+
 })

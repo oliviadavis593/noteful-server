@@ -15,6 +15,21 @@ foldersRouter
         })
         .catch(next)
     })
+    .post(jsonParser, (req, res, next) => {
+        const { folder_name } = req.body
+        const newFolder = { folder_name }
+        FoldersService.insertFolders(
+            req.app.get('db'),
+            newFolder
+        )
+            .then(folder => {
+                res
+                    .status(201)
+                    .location(`/folders/${folder.id}`)
+                    .json(folder)
+            })
+            .catch(next)
+    })
 
 foldersRouter
     .route('/folders/:folder_id')
