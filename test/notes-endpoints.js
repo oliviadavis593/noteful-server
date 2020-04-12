@@ -94,26 +94,43 @@ describe('Notes Endpoints', () => {
     })
 
     describe.only('POST /notes', () => {
-        it(`creates a note, responding with 201 and the new note`, () => {
-            const newNote = {
-                note_name: 'test new note name',
-                content: 'test new content',
-            }
-            return supertest(app)
-                .post('/notes')
-                .send(newNote)
-                .expect(201)
-                .expect(res => {
-                    expect(res.body.note_name).to.eql(newNote.note_name)
-                    expect(res.body.content).to.eql(newNote.content)
-                    expect(res.body).to.have.property('id')
-                    expect(res.body).to.have.property('folder_name')
-                })
-                .then(res =>
-                    supertest(app)
-                        .get(`/notes/${res.body.id}`)
-                        .expect(res.body)    
-                )
+        context(`creates a new note`, () => {
+            const testFolders = makeFoldersArray()
+            const testNotes = makeNotesArray()
+
+            beforeEach('insert notes', () => {
+                return db 
+                    .into('noteful_folders')
+                    .insert(testFolders)
+                    .then(() => {
+                        return db 
+                            .into('noteful_notes')
+                            .insert(testNotes)
+                    })
+            })
+
+            it(`creates a note, responding with 201 and the new note`, () => {
+                const newNote = {
+                    note_name: 'test new note name',
+                    content: 'test new content',
+                    folder_id: 5
+                }
+                return supertest(app)
+                    .post('/notes')
+                    .send(newNote)
+                    .expect(201)
+                    .expect(res => {
+                        expect(res.body.note_name).to.eql(newNote.note_name)
+                        expect(res.body.content).to.eql(newNote.content)
+                        expect(res.body).to.have.property('id')
+                        expect(res.body).to.have.property('folder_id')
+                    })
+                    .then(res =>
+                        supertest(app)
+                            .get(`/notes/${res.body.id}`)
+                            .expect(res.body)    
+                    )
+            })
         })
     })
     

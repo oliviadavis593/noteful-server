@@ -15,8 +15,8 @@ notesRouter
             .catch(next)
     })
     .post(jsonParser, (req, res, next) => {
-        const { note_name, content } = req.body
-        const newNote = { note_name, content }
+        const { note_name, content, folder_id } = req.body
+        const newNote = { note_name, content, folder_id }
         NotesService.insertNotes(
             req.app.get('db'),
             newNote
