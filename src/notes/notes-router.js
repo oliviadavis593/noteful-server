@@ -15,11 +15,18 @@ notesRouter
             .catch(next)
     })
     .post(jsonParser, (req, res, next) => {
-
-       res.status(201).json({
-           ...req.body,
-           id: 12
-       })
+        const { note_name, content } = req.body
+        const newNote = { note_name, content }
+        NotesService.insertNotes(
+            req.app.get('db'),
+            newNote
+        )
+            .then(note => {
+                res
+                    .status(201)
+                    .json(note)
+            })
+            .catch(next)
     })
 
 notesRouter

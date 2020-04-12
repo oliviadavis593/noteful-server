@@ -93,12 +93,11 @@ describe('Notes Endpoints', () => {
         })
     })
 
-    describe('POST /notes', () => {
-        it(`creates an note, responding with 201 and the new note`, () => {
+    describe.only('POST /notes', () => {
+        it(`creates a note, responding with 201 and the new note`, () => {
             const newNote = {
-                note_name: 'New note name',
-                content: 'New content',
-                folder_id: 2
+                note_name: 'test new note name',
+                content: 'test new content',
             }
             return supertest(app)
                 .post('/notes')
@@ -108,19 +107,15 @@ describe('Notes Endpoints', () => {
                     expect(res.body.note_name).to.eql(newNote.note_name)
                     expect(res.body.content).to.eql(newNote.content)
                     expect(res.body).to.have.property('id')
-                    //Add more assertions
+                    expect(res.body).to.have.property('folder_name')
                 })
+                .then(res =>
+                    supertest(app)
+                        .get(`/notes/${res.body.id}`)
+                        .expect(res.body)    
+                )
         })
-
-        it(`responds with 400 and an error message when 'note_name'`, () => {
-            return supertest(app)
-                .post('/notes')
-                .send({
-                    //note_name: 'new note name'
-                    content: 'new content'
-                })
-        })
-            
     })
+    
 
 })
