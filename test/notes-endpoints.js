@@ -46,6 +46,14 @@ describe('Notes Endpoints', () => {
             })
     
         })
+
+        context('Given no notes', () => {
+            it(`responds with 200 and an empty list`, () => {
+                return supertest(app)
+                    .get('/notes')
+                    .expect(200, [])
+            })
+        })
     })
 
     describe('GET /notes/:note_id', () => {
@@ -70,6 +78,17 @@ describe('Notes Endpoints', () => {
                 return supertest(app)
                     .get(`/notes/${noteId}`)
                     .expect(200, expectedNote)
+            })
+        })
+
+        context('Given no notes', () => {
+            it(`responds with 404`, () => {
+                const noteId = 123456
+                return supertest(app)
+                    .get(`/notes/${noteId}`)
+                    .expect(404, {
+                        error: { message: `Note Not Found` }
+                    })
             })
         })
     })

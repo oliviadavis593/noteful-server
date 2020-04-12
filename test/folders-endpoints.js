@@ -39,6 +39,14 @@ describe('Folders Endpoints', function() {
             })
     
         })
+
+        context('Given no folders', () => {
+            it(`responds with 200 and an empty list`, () => {
+                return supertest(app)
+                    .get('/notes')
+                    .expect(200, [])
+            })
+        })
     })
 
     describe('GET /folders/:folder_id', () => {
@@ -57,6 +65,17 @@ describe('Folders Endpoints', function() {
                 return supertest(app)
                     .get(`/folders/${folderId}`)
                     .expect(200, expectedFolder)
+            })
+        })
+
+        context(`Given no folders`, () => {
+            it(`responds with 404`, () => {
+                const folderId = 123456
+                return supertest(app)
+                    .get(`/folders/${folderId}`)
+                    .expect(404, {
+                        error: { message: `Folder Not Found`}
+                    })
             })
         })
     })

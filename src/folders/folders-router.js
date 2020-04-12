@@ -16,5 +16,20 @@ foldersRouter
         .catch(next)
     })
 
+foldersRouter
+    .route('/folders/:folder_id')
+    .get((req, res, next) => {
+        const knexInstance = req.app.get('db')
+        FoldersService.getById(knexInstance, req.params.folder_id)
+            .then(folder => {
+                if (!folder) {
+                    return res.status(404).json({
+                        error: { message: `Folder Not Found`}
+                    })
+                }
+                res.json(folder)
+            })
+            .catch(next)
+    })
 
 module.exports = foldersRouter
