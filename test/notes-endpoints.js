@@ -111,6 +111,15 @@ describe('Notes Endpoints', () => {
                     //Add more assertions
                 })
         })
+
+        it(`responds with 400 and an error message when 'note_name'`, () => {
+            return supertest(app)
+                .post('/notes')
+                .send({
+                    //note_name: 'new note name'
+                    content: 'new content'
+                })
+        })
             
     })
 

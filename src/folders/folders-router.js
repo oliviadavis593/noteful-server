@@ -18,6 +18,13 @@ foldersRouter
     .post(jsonParser, (req, res, next) => {
         const { folder_name } = req.body
         const newFolder = { folder_name }
+
+        if (!folder_name) {
+            return res.status(400).json({
+                error: { message: `Missing 'folder_name' in request body` }
+            })
+        }
+
         FoldersService.insertFolders(
             req.app.get('db'),
             newFolder
