@@ -113,7 +113,7 @@ describe('Notes Endpoints', () => {
                 const newNote = {
                     note_name: 'test new note name',
                     content: 'test new content',
-                    folder_id: 5
+                    folder_id: 2
                 }
                 return supertest(app)
                     .post('/notes')
@@ -124,6 +124,7 @@ describe('Notes Endpoints', () => {
                         expect(res.body.content).to.eql(newNote.content)
                         expect(res.body).to.have.property('id')
                         expect(res.body).to.have.property('folder_id')
+                        expect(res.header.location).to.eql(`/notes/${res.body.id}`)
                     })
                     .then(res =>
                         supertest(app)
