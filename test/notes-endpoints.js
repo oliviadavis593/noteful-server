@@ -57,7 +57,7 @@ describe('Notes Endpoints', () => {
     })
 
     describe('GET /notes/:note_id', () => {
-        context('Given there are notes in the database', () => {
+        context.skip('Given there are notes in the database', () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
 
@@ -93,7 +93,7 @@ describe('Notes Endpoints', () => {
         })
     })
 
-    describe.only('POST /notes', () => {
+    describe('POST /notes', () => {
         context(`creates a new note`, () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
@@ -131,6 +131,27 @@ describe('Notes Endpoints', () => {
                             .get(`/notes/${res.body.id}`)
                             .expect(res.body)    
                     )
+            })
+
+            const requiredFields = ['note_name', 'content']
+
+            requiredFields.forEach(field => {
+                const newNote = {
+                    note_name: 'Test new note',
+                    content: 'CONTENT',
+                    folder_id: 4
+                }
+
+                it(`responds with 400 and an error message when the '${field}' is missing`, () => {
+                    delete newNote[field]
+
+                    return supertest(app)
+                        .post('/notes')
+                        .send(newNote)
+                        .expect(400, {
+                            error: { message: `Missing '${field}' in request body` }
+                        })
+                })
             })
         })
     })
