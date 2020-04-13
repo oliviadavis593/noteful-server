@@ -1,4 +1,5 @@
 const express = require('express')
+const xss = require('xss')
 const NotesService = require('./notes-service')
 
 const notesRouter = express.Router()
@@ -50,7 +51,13 @@ notesRouter
                         error: { message: `Note Not Found` }
                     })
                 }
-                res.json(note)
+                res.json({
+                    id: note.id, 
+                    note_name: xss(note.note_name), 
+                    content: xss(note.content), 
+                    modified: note.modified,
+                    folder_id: note.folder_id
+                })
             })
             .catch(next)
     })

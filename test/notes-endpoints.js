@@ -91,6 +91,41 @@ describe('Notes Endpoints', () => {
                     })
             })
         })
+
+        context(`Given an XSS attack note`, () => {
+            const testFolders = makeFoldersArray()
+            //const testNotes = makeNotesArray()
+            const maliciousNote = {
+                id: 911, 
+                note_name: 'Naughty',
+                content: 'Bad',
+                modified: '2020-04-12T01:15:22.505Z',
+                folder_id: 1,
+            }
+            
+            beforeEach('insert malicious note', () => {
+                return db
+                    .into('noteful_folders')
+                    .insert(testFolders)
+                    .then(() => {
+                        return db
+                            .into('noteful_notes')
+                            .insert([ maliciousNote ])
+                    })
+            })
+
+            it('removes XSS attack content', () => {
+                return supertest(app)
+                    .get(`/notes/${maliciousNote.id}`)
+                    .expect(200)
+                    .expect(res => {
+                        expect(res.body.note_name).to.eql(maliciousNote.note_name)
+                        expect(res.body.content).to.eql(maliciousNote.content)
+                        expect(res.body.modified).to.eql(maliciousNote.modified)
+                        expect(res.body.folder_id).to.eql(maliciousNote.folder_id)
+                    })
+            })
+        })
     })
 
     describe('POST /notes', () => {
