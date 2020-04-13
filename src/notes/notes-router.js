@@ -16,7 +16,7 @@ notesRouter
             .catch(next)
     })
     .post(jsonParser, (req, res, next) => {
-        const { note_name, content, folder_id} = req.body
+        const { note_name, content, folder_id } = req.body
         const newNote = { note_name, content, folder_id }
 
         for (const [key, value] of Object.entries(newNote)) {
@@ -42,22 +42,38 @@ notesRouter
 
 notesRouter
     .route('/notes/:note_id')
-    .get((req, res, next) => {
-        const knexInstance = req.app.get('db')
-        NotesService.getById(knexInstance, req.params.note_id)
+    .all((req, res, next) => {
+        NotesService.getById(
+            req.app.get('db'),
+            req.params.note_id
+        )
             .then(note => {
                 if (!note) {
                     return res.status(404).json({
-                        error: { message: `Note Not Found` }
+                        error: { message: `Note Not Found`}
                     })
                 }
-                res.json({
-                    id: note.id, 
-                    note_name: xss(note.note_name), 
-                    content: xss(note.content), 
-                    modified: note.modified,
-                    folder_id: note.folder_id
-                })
+                res.note = note //save note for next middleware 
+                next()
+            })
+            .catch()
+    })
+    .get((req, res, next) => {
+        res.json({
+            id: note.id, 
+            note_name: xss(note.note_name), 
+            content: xss(note.content), 
+            modified: note.modified,
+            folder_id: note.folder_id
+        })
+    })
+    .delete((req, res, next) => {
+        NotesService.deleteNote(
+            req.app.get('db'),
+            req.params.note_id
+        )
+            .then(() => {
+                res.status(204).end()
             })
             .catch(next)
     })
