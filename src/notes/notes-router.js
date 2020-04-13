@@ -59,6 +59,7 @@ notesRouter
             .catch()
     })
     .get((req, res, next) => {
+        console.log(req)
         res.json({
             id: note.id, 
             note_name: xss(note.note_name), 

@@ -208,7 +208,7 @@ describe('Notes Endpoints', () => {
             })
 
             it('responds with 204 and removes the note', () => {
-                const idToRemove = 2
+                const idToRemove = 5
                 const expectedNotes = testNotes.filter(note => note.id !== idToRemove)
                 return supertest(app)
                     .delete(`/notes/${idToRemove}`)

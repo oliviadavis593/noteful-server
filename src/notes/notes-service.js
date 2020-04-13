@@ -5,6 +5,7 @@ const NotesService = {
     },
 
     insertNotes(knex, newNote) {
+        console.log(newNote)
         return knex
             .insert(newNote)
             .into('noteful_notes')
