@@ -1,4 +1,5 @@
 const express = require('express')
+const xss = require('xss')
 const FoldersService = require('./folders-service')
 const logger = require('../logger')
 
@@ -49,7 +50,10 @@ foldersRouter
                         error: { message: `Folder Not Found`}
                     })
                 }
-                res.json(folder)
+                res.json({
+                    id: folder.id, 
+                    folder_name: xss(folder.folder_name)
+                })
             })
             .catch(next)
     })

@@ -78,6 +78,28 @@ describe('Folders Endpoints', function() {
                     })
             })
         })
+
+        context(`Given an XSS attack folder`, () => {
+            const maliciousFolder = {
+                id: 911, 
+                folder_name: 'Naughty folder'
+            }
+
+            beforeEach('insert malicious folder', () => {
+                return db 
+                    .into('noteful_folders')
+                    .insert([ maliciousFolder ])
+            })
+
+            it('removes XSS attack content', () => {
+                return supertest(app)
+                    .get(`/folders/${maliciousFolder.id}`)
+                    .expect(200)
+                    .expect(res => {
+                        expect(res.body.folder_name).to.eql(maliciousFolder.folder_name)
+                    })
+            })
+        })
     })
 
     describe('POST /folders', () => {
