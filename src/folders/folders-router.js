@@ -57,5 +57,28 @@ foldersRouter
             })
             .catch(next)
     })
+    .delete((req, res, next) => {
+        FoldersService.deleteFolder(
+            req.app.get('db'),
+            req.params.folder_id
+        )
+            .then(() => {
+                res.status(404).end()
+            })
+            .catch(next)
+    })
+    .patch(jsonParser, (req, res, next) => {
+        const { folder_name } = req.body
+        const folderToUpdate = { folder_name }
+        FoldersService.updateFolder(
+            req.app.get('db'),
+            req.params.folder_id,
+            folderToUpdate
+        )
+            .then(numRowsAffected => {
+                res.status(404).end()
+            })
+            .catch(next)
+    })
 
 module.exports = foldersRouter
