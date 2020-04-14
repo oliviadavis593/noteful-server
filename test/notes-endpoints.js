@@ -159,7 +159,7 @@ describe('Notes Endpoints', () => {
                         expect(res.body.content).to.eql(newNote.content)
                         expect(res.body).to.have.property('id')
                         expect(res.body).to.have.property('folder_id')
-                        expect(res.header.location).to.eql(`/notes/${res.body.id}`)
+                        expect(res.header.location).to.eql(`/api/notes/${res.body.id}`)
                     })
                     .then(res =>
                         supertest(app)
@@ -241,6 +241,57 @@ describe('Notes Endpoints', () => {
                 return supertest(app)
                     .delete(`/api/notes/${noteId}`)
                     .expect(404, { error: { message: `Note Not Found` } })
+            })
+        })
+    })
+    
+    describe.only(`PATCH /api/notes/:note_id`, () => {
+        context(`Given no notes`, () => {
+            it(`responds with 404`, () => {
+                const noteId = 123456
+                return supertest(app)
+                    .patch(`/api/notes/${noteId}`)
+                    .expect(404, {
+                        error: { message: `Note Not Found` }
+                    })
+            })
+        })
+
+        context(`Given there are notes in the database`, () => {
+            const testFolders = makeFoldersArray()
+            const testNotes = makeNotesArray()
+
+            beforeEach('insert notes', () => {
+                return db 
+                    .into('noteful_folders')
+                    .insert(testFolders)
+                    .then(() => {
+                        return db 
+                            .into('noteful_notes')
+                            .insert(testNotes)
+                    })
+            })
+
+            it('responds with 204 and updates the note', () => {
+                const idToUpdate = 2
+                const updateNote = {
+                    note_name: 'updated note name',
+                    content: 'updated content',
+                    folder_id: 4
+                }
+                const expectedNote = {
+                    ...testNotes[idToUpdate - 1],
+                    ...updateNote
+                }
+                return supertest(app)
+                    .patch(`/api/notes/${idToUpdate}`)
+                    .send(updateNote)
+                    .expect(204)
+                    .then(res => 
+                        supertest(app)
+                            .get(`/api/notes/${idToUpdate}`)
+                            .expect(expectedNote)    
+                    )
             })
         })
     })

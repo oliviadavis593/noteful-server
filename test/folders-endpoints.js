@@ -132,5 +132,84 @@ describe('Folders Endpoints', function() {
         })
 
     })
+
+    describe.only(`DELETE /api/folders/:folder_id`, () => {
+        context('Given there are folders in the database', () => {
+            const testFolders = makeFoldersArray()
+
+            beforeEach('insert folders', () => {
+                return db 
+                    .into('noteful_folders')
+                    .insert(testFolders)
+            })
+
+            
+            it('responds with 204 and removes the folder', () => {
+                const idToRemove = 2
+                const expectedFolder = testFolders.filter(folder => folder.id !== idToRemove)
+                return supertest(app)
+                    .delete(`/api/folders/${idToRemove}`)
+                    .expect(204)
+                    .then(res =>
+                        supertest(app)
+                            .get(`/api/folders`)
+                            .expect(expectedFolder)    
+                    )
+            })
+        })
+
+        context(`Given no folders`, () => {
+            it(`responds with 404`, () => {
+                const folderId = 123456
+                return supertest(app)
+                    .delete(`/api/folders/${folderId}`)
+                    .expect(404, {
+                        error: { message: `Folder Not Found` }
+                    })
+            })
+        })
+    })
+
+    describe.only(`PATCH /api/folders/:folder_id`, () => {
+        context(`Given no folders`, () => {
+            it(`responds with 404`, () => {
+                const folderId = 123456
+                return supertest(app)
+                    .patch(`/api/folders/${folderId}`)
+                    .expect(404, { error: { message: `Folder Not Found`} })
+            })
+        })
+
+        context('Given there are folders in the database', () => {
+            const testFolders = makeFoldersArray()
+
+            beforeEach('insert folders', () => {
+                return db 
+                    .into('noteful_folders')
+                    .insert(testFolders)
+            })
+
+            it('responds with 204 and updates the folder', () => {
+                const idToUpdate = 2 
+                const updateFolder = {
+                    folder_name: 'test updated folder',
+                }
+                const expectedFolder = {
+                    ...testFolders[idToUpdate - 1], 
+                    ...updateFolder
+                }
+                return supertest(app)
+                    .patch(`/api/folders/${idToUpdate}`)
+                    .send(updateFolder)
+                    .expect(204)
+                    .then(res => 
+                        supertest(app)
+                            .get(`/api/folders/${idToUpdate}`)
+                            .expect(expectedFolder)    
+                    )
+            })
+        })
+    })
+
 })
 

@@ -1,9 +1,11 @@
 const express = require('express')
 const xss = require('xss')
+const path = require('path')
 const NotesService = require('./notes-service')
 
 const notesRouter = express.Router()
 const jsonParser = express.json()
+
 
 notesRouter
     .route('/')
@@ -34,7 +36,7 @@ notesRouter
             .then(note => {
                 res
                     .status(201)
-                    .location(`/notes/${note.id}`)
+                    .location(req.originalUrl + `/${note.id}`)
                     .json(note)
             })
             .catch(next)
@@ -73,6 +75,20 @@ notesRouter
             req.params.note_id
         )
             .then(() => {
+                res.status(204).end()
+            })
+            .catch(next)
+    })
+    .patch(jsonParser, (req, res, next) => {
+        const { note_name, content, folder_id } = req.body
+        const noteToUpdate = { note_name, content, folder_id }
+
+        NotesService.updateNote(
+            req.app.get(db),
+            req.params.note_id, 
+            noteToUpdate
+        )
+            .then(numRowsAffected => {
                 res.status(204).end()
             })
             .catch(next)
