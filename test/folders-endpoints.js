@@ -208,6 +208,42 @@ describe('Folders Endpoints', function() {
                             .expect(expectedFolder)    
                     )
             })
+
+            it(`responds with 400 when no required fields supplied`, () => {
+                const idToUpdate = 2
+                return supertest(app)
+                    .patch(`/api/folders/${idToUpdate}`)
+                    .send({ irrelevantField: 'foo' })
+                    .expect(400, {
+                        error: {
+                            message: `Request body must contain 'folder_name'`
+                        }
+                    })
+            })
+
+            it(`responds with 204 when updating only a subset of fields`, () => {
+                const idToUpdate = 2
+                const updateFolder = {
+                    folder_name: 'Second test folder'
+                }
+                const expectedFolder =  {
+                    ...testFolders[idToUpdate - 1],
+                    ...updateFolder
+                }
+
+                return supertest(app)
+                    .patch(`/api/folders/${idToUpdate}`)
+                    .send({
+                        ...updateFolder, 
+                        fieldToIgnore: 'should not be in GET response'
+                    })
+                    .expect(204)
+                    .then(res => 
+                        supertest(app)
+                            .get(`/api/folders/${idToUpdate}`)
+                            .expect(expectedFolder)    
+                    )
+            })
         })
     })
 

@@ -83,6 +83,15 @@ notesRouter
        const { note_name, content, folder_id, modified} = req.body
        const noteToUpdate = { note_name, content, folder_id, modified }
 
+       const numberOfValues = Object.values(noteToUpdate).filter(Boolean).length
+       if (numberOfValues === 0) {
+           return res.status(400).json({
+               error: {
+                   message: `Request body must contain note_name, content and folder_id`
+               }
+           })
+       }
+
        NotesService.updateNote(
            req.app.get('db'),
            req.params.note_id, 

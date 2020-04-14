@@ -295,6 +295,46 @@ describe('Notes Endpoints', () => {
                             .expect(expectedNote)    
                     )
             })
+
+            it(`responds with 400 when no required fields supplied`, () => {
+                const idToUpdate = 5
+                return supertest(app)
+                    .patch(`/api/notes/${idToUpdate}`)
+                    .send({ irrelevantField: 'foo' })
+                    .expect(400, {
+                        error: {
+                            message: `Request body must contain note_name, content and folder_id`
+                        }
+                    })
+            })
+
+            it(`responds with 204 when updating only a subset of fields`, () => {
+                const idToUpdate = 5
+                const updateNote = {
+                    id: 5, 
+                    note_name: 'First test note name',
+                    content: 'First content',
+                    modified: '2020-03-12T01:10:22.505Z',
+                    folder_id: 1
+                }
+                const expectedNote = {
+                    ...testNotes[idToUpdate - 1],
+                    ...updateNote
+                }
+
+                return supertest(app)
+                    .patch(`/api/notes/${idToUpdate}`)
+                    .send({
+                        ...updateNote,
+                        fieldToIgnore: 'should not be in GET response'
+                    })
+                    .expect(204)
+                    .then(res => 
+                        supertest(app)
+                            .get(`/api/notes/${idToUpdate}`)
+                            .expect(expectedNote)    
+                    )
+            })
         })
     })
 
