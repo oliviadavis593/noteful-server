@@ -245,7 +245,7 @@ describe('Notes Endpoints', () => {
         })
     })
     
-    describe.only(`PATCH /api/notes/:note_id`, () => {
+    describe(`PATCH /api/notes/:note_id`, () => {
         context(`Given no notes`, () => {
             it(`responds with 404`, () => {
                 const noteId = 123456
@@ -273,11 +273,13 @@ describe('Notes Endpoints', () => {
             })
 
             it('responds with 204 and updates the note', () => {
-                const idToUpdate = 2
+                const idToUpdate = 5
                 const updateNote = {
-                    note_name: 'updated note name',
-                    content: 'updated content',
-                    folder_id: 4
+                    id: 5, 
+                    note_name: 'First test note name',
+                    content: 'First content',
+                    modified: '2020-03-12T01:10:22.505Z',
+                    folder_id: 1
                 }
                 const expectedNote = {
                     ...testNotes[idToUpdate - 1],

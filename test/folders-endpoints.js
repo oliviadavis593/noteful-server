@@ -133,7 +133,7 @@ describe('Folders Endpoints', function() {
 
     })
 
-    describe.only(`DELETE /api/folders/:folder_id`, () => {
+    describe(`DELETE /api/folders/:folder_id`, () => {
         context('Given there are folders in the database', () => {
             const testFolders = makeFoldersArray()
 
@@ -170,7 +170,7 @@ describe('Folders Endpoints', function() {
         })
     })
 
-    describe.only(`PATCH /api/folders/:folder_id`, () => {
+    describe(`PATCH /api/folders/:folder_id`, () => {
         context(`Given no folders`, () => {
             it(`responds with 404`, () => {
                 const folderId = 123456
@@ -192,10 +192,10 @@ describe('Folders Endpoints', function() {
             it('responds with 204 and updates the folder', () => {
                 const idToUpdate = 2 
                 const updateFolder = {
-                    folder_name: 'test updated folder',
+                    folder_name: 'Third test folder',
                 }
                 const expectedFolder = {
-                    ...testFolders[idToUpdate - 1], 
+                    ...testFolders[idToUpdate - 1],
                     ...updateFolder
                 }
                 return supertest(app)

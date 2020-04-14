@@ -80,14 +80,14 @@ notesRouter
             .catch(next)
     })
     .patch(jsonParser, (req, res, next) => {
-        const { note_name, content, folder_id } = req.body
-        const noteToUpdate = { note_name, content, folder_id }
+       const { note_name, content, folder_id, modified} = req.body
+       const noteToUpdate = { note_name, content, folder_id, modified }
 
-        NotesService.updateNote(
-            req.app.get(db),
-            req.params.note_id, 
-            noteToUpdate
-        )
+       NotesService.updateNote(
+           req.app.get('db'),
+           req.params.note_id, 
+           noteToUpdate
+       )
             .then(numRowsAffected => {
                 res.status(204).end()
             })

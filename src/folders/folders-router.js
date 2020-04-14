@@ -69,20 +69,21 @@ foldersRouter
             req.params.folder_id
         )
             .then(() => {
-                res.status(404).end()
+                res.status(204).end()
             })
             .catch(next)
     })
     .patch(jsonParser, (req, res, next) => {
         const { folder_name } = req.body
         const folderToUpdate = { folder_name }
+
         FoldersService.updateFolder(
-            req.app.get('db'),
-            req.params.folder_id,
+            req.app.get('db'), 
+            req.params.folder_id, 
             folderToUpdate
         )
             .then(numRowsAffected => {
-                res.status(404).end()
+                res.status(204).end()
             })
             .catch(next)
     })
