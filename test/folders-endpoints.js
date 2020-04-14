@@ -22,7 +22,7 @@ describe('Folders Endpoints', function() {
 
     afterEach('clean the table', tableCleanup);
 
-    describe('GET /folders', () => {
+    describe('GET /api/folders', () => {
         context('Given there are folders in the database', () => {
             const testFolders = makeFoldersArray()
     
@@ -32,7 +32,7 @@ describe('Folders Endpoints', function() {
                     .insert(testFolders)
             })
     
-            it('GET /folders responds with 200 and all the folders', () => {
+            it('GET /api/folders responds with 200 and all the folders', () => {
                 return supertest(app)
                     .get('/folders')
                     .expect(200, testFolders)
@@ -43,7 +43,7 @@ describe('Folders Endpoints', function() {
         context('Given no folders', () => {
             it(`responds with 200 and an empty list`, () => {
                 return supertest(app)
-                    .get('/notes')
+                    .get('/api/notes') //change to folders endpoint 
                     .expect(200, [])
             })
         })
@@ -59,11 +59,11 @@ describe('Folders Endpoints', function() {
                     .insert(testFolders)
             })
 
-            it('GET /folders/:folder_id responds with 200 and specified folder', () => {
+            it('GET /api/folders/:folder_id responds with 200 and specified folder', () => {
                 const folderId = 2
                 const expectedFolder = testFolders[folderId - 1]
                 return supertest(app)
-                    .get(`/folders/${folderId}`)
+                    .get(`/api/folders/${folderId}`)
                     .expect(200, expectedFolder)
             })
         })
@@ -72,7 +72,7 @@ describe('Folders Endpoints', function() {
             it(`responds with 404`, () => {
                 const folderId = 123456
                 return supertest(app)
-                    .get(`/folders/${folderId}`)
+                    .get(`/api/folders/${folderId}`)
                     .expect(404, {
                         error: { message: `Folder Not Found`}
                     })
@@ -93,7 +93,7 @@ describe('Folders Endpoints', function() {
 
             it('removes XSS attack content', () => {
                 return supertest(app)
-                    .get(`/folders/${maliciousFolder.id}`)
+                    .get(`/api/folders/${maliciousFolder.id}`)
                     .expect(200)
                     .expect(res => {
                         expect(res.body.folder_name).to.eql(maliciousFolder.folder_name)
@@ -108,7 +108,7 @@ describe('Folders Endpoints', function() {
                 folder_name: 'Test new folder'
             }
             return supertest(app)
-                .post('/folders')
+                .post('/api/folders')
                 .send(newFolder)
                 .expect(201)
                 .expect(res => {
@@ -118,14 +118,14 @@ describe('Folders Endpoints', function() {
                 })
                 .then(res => 
                     supertest(app)
-                        .get(`/folders/${res.body.id}`)
+                        .get(`/api/folders/${res.body.id}`)
                         .expect(res.body)    
                 )
         })
 
         it(`responds with 400 and an error message when 'folder_name' is missing`, () => {
             return supertest(app)
-                .post('/folders')
+                .post('/api/folders')
                 .send({
                     folder_name: 'new folder name'
                 })

@@ -79,13 +79,3 @@ notesRouter
     })
 
 module.exports = notesRouter
-
-/*
-res.json({
-            id: note.id, 
-            note_name: xss(note.note_name), 
-            content: xss(note.content), 
-            modified: note.modified,
-            folder_id: note.folder_id
-        })
-*/

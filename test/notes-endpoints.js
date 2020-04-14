@@ -23,7 +23,7 @@ describe('Notes Endpoints', () => {
 
     afterEach('clean the table', tableCleanup);
 
-    describe('GET /notes', () => {
+    describe('GET /api/notes', () => {
         context('Given there are notes in the database', () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
@@ -41,7 +41,7 @@ describe('Notes Endpoints', () => {
     
             it('GET /notes responds with 200 and all the notes', () => {
                 return supertest(app)
-                    .get('/notes')
+                    .get('/api/notes')
                     .expect(200, testNotes)
             })
     
@@ -50,13 +50,13 @@ describe('Notes Endpoints', () => {
         context('Given no notes', () => {
             it(`responds with 200 and an empty list`, () => {
                 return supertest(app)
-                    .get('/notes')
+                    .get('/api/notes')
                     .expect(200, [])
             })
         })
     })
 
-    describe('GET /notes/:note_id', () => {
+    describe('GET /api/notes/:note_id', () => {
         context.skip('Given there are notes in the database', () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
@@ -72,11 +72,11 @@ describe('Notes Endpoints', () => {
                     })
             })
 
-            it('GET /notes/:note_id responds with 200 and specified note', () => {
+            it('GET /api/notes/:note_id responds with 200 and specified note', () => {
                 const noteId = 2
                 const expectedNote = testNotes[noteId - 1]
                 return supertest(app)
-                    .get(`/notes/${noteId}`)
+                    .get(`/api/notes/${noteId}`)
                     .expect(200, expectedNote)
             })
         })
@@ -85,7 +85,7 @@ describe('Notes Endpoints', () => {
             it(`responds with 404`, () => {
                 const noteId = 123456
                 return supertest(app)
-                    .get(`/notes/${noteId}`)
+                    .get(`/api/notes/${noteId}`)
                     .expect(404, {
                         error: { message: `Note Not Found` }
                     })
@@ -116,7 +116,7 @@ describe('Notes Endpoints', () => {
 
             it('removes XSS attack content', () => {
                 return supertest(app)
-                    .get(`/notes/${maliciousNote.id}`)
+                    .get(`/api/notes/${maliciousNote.id}`)
                     .expect(200)
                     .expect(res => {
                         expect(res.body.note_name).to.eql(maliciousNote.note_name)
@@ -128,7 +128,7 @@ describe('Notes Endpoints', () => {
         })
     })
 
-    describe('POST /notes', () => {
+    describe('POST /api/notes', () => {
         context(`creates a new note`, () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
@@ -151,7 +151,7 @@ describe('Notes Endpoints', () => {
                     folder_id: 2
                 }
                 return supertest(app)
-                    .post(`/notes`)
+                    .post(`/api/notes`)
                     .send(newNote)
                     .expect(201)
                     .expect(res => {
@@ -163,7 +163,7 @@ describe('Notes Endpoints', () => {
                     })
                     .then(res =>
                         supertest(app)
-                            .get(`/notes/${res.body.id}`)
+                            .get(`/api/notes/${res.body.id}`)
                             .expect(res.body)    
                     )
             })
@@ -181,7 +181,7 @@ describe('Notes Endpoints', () => {
                     delete newNote[field]
 
                     return supertest(app)
-                        .post('/notes')
+                        .post('/api/notes')
                         .send(newNote)
                         .expect(400, {
                             error: { message: `Missing '${field}' in request body` }
@@ -191,7 +191,7 @@ describe('Notes Endpoints', () => {
         })
     })
     
-    describe(`DELETE /notes/:note_id`, () => {
+    describe(`DELETE /api/notes/:note_id`, () => {
         context('Given there are notes in the database', () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
@@ -215,7 +215,7 @@ describe('Notes Endpoints', () => {
                     .expect(204)
                     .then(res =>
                         supertest(app)
-                            .get(`/notes`)
+                            .get(`/api/notes`)
                             .expect(expectedNotes)    
                     )
             })
@@ -239,7 +239,7 @@ describe('Notes Endpoints', () => {
             it(`responds with 404`, () => {
                 const noteId = 123456
                 return supertest(app)
-                    .delete(`/notes/${noteId}`)
+                    .delete(`/api/notes/${noteId}`)
                     .expect(404, { error: { message: `Note Not Found` } })
             })
         })
