@@ -59,13 +59,12 @@ notesRouter
             .catch()
     })
     .get((req, res, next) => {
-        console.log(req)
         res.json({
-            id: note.id, 
-            note_name: xss(note.note_name), 
-            content: xss(note.content), 
-            modified: note.modified,
-            folder_id: note.folder_id
+            id: res.note.id, 
+            note_name: xss(res.note.note_name), 
+            content: xss(res.note.content), 
+            modified: res.note.modified,
+            folder_id: res.note.folder_id
         })
     })
     .delete((req, res, next) => {
@@ -80,3 +79,13 @@ notesRouter
     })
 
 module.exports = notesRouter
+
+/*
+res.json({
+            id: note.id, 
+            note_name: xss(note.note_name), 
+            content: xss(note.content), 
+            modified: note.modified,
+            folder_id: note.folder_id
+        })
+*/
