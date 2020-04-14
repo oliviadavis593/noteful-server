@@ -7,7 +7,7 @@ const foldersRouter = express.Router()
 const jsonParser = express.json()
 
 foldersRouter
-    .route('/folders')
+    .route('/')
     .get((req, res, next) => {
         const knexInstance = req.app.get('db')
         FoldersService.getAllFolders(knexInstance)
@@ -40,7 +40,7 @@ foldersRouter
     })
 
 foldersRouter
-    .route('/folders/:folder_id')
+    .route('/:folder_id')
     .get((req, res, next) => {
         const knexInstance = req.app.get('db')
         FoldersService.getById(knexInstance, req.params.folder_id)

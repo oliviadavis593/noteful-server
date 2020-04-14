@@ -57,7 +57,7 @@ describe('Notes Endpoints', () => {
     })
 
     describe('GET /api/notes/:note_id', () => {
-        context.skip('Given there are notes in the database', () => {
+        context('Given there are notes in the database', () => {
             const testFolders = makeFoldersArray()
             const testNotes = makeNotesArray()
 
@@ -73,8 +73,8 @@ describe('Notes Endpoints', () => {
             })
 
             it('GET /api/notes/:note_id responds with 200 and specified note', () => {
-                const noteId = 2
-                const expectedNote = testNotes[noteId - 1]
+                const noteId = 6
+                const expectedNote = testNotes.find(note => note.id === noteId)
                 return supertest(app)
                     .get(`/api/notes/${noteId}`)
                     .expect(200, expectedNote)
@@ -211,7 +211,7 @@ describe('Notes Endpoints', () => {
                 const idToRemove = 5
                 const expectedNotes = testNotes.filter(note => note.id !== idToRemove)
                 return supertest(app)
-                    .delete(`/notes/${idToRemove}`)
+                    .delete(`/api/notes/${idToRemove}`)
                     .expect(204)
                     .then(res =>
                         supertest(app)

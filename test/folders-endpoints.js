@@ -34,7 +34,7 @@ describe('Folders Endpoints', function() {
     
             it('GET /api/folders responds with 200 and all the folders', () => {
                 return supertest(app)
-                    .get('/folders')
+                    .get('/api/folders')
                     .expect(200, testFolders)
             })
     
