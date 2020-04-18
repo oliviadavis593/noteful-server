@@ -18,8 +18,8 @@ notesRouter
             .catch(next)
     })
     .post(jsonParser, (req, res, next) => {
-        const { note_name, content_name , folder_id } = req.body
-        const newNote = { note_name, content_name, folder_id }
+        const { note_name, content , folder_id } = req.body
+        const newNote = { note_name, content, folder_id }
 
         for (const [key, value] of Object.entries(newNote)) {
             if (value == null) {
@@ -39,8 +39,7 @@ notesRouter
                     .location(req.originalUrl + `/${note.id}`)
                     .json(note)
             })
-            console.log(e)
-            .next(e)
+            .catch(next)
     })
 
 notesRouter
