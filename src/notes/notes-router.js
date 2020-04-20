@@ -58,7 +58,7 @@ notesRouter
                 res.note = note //save note for next middleware 
                 next()
             })
-            .catch()
+            .catch(next)
     })
     .get((req, res, next) => {
         res.json({
