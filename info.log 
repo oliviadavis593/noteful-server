@@ -170,3 +170,5 @@
 {"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
 {"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
 {"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"Unable to acquire a connection","level":"error"}
+{"message":"Unable to acquire a connection","level":"error"}
