@@ -1,0 +1,172 @@
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"[object Object]\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"title is not defined","level":"error"}
+{"message":"title is not defined","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, DEFAULT) returning * - null value in column \"note_name\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"noteful_notes_pkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"noteful_notes_pkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"noteful_notes_pkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"noteful_notes_pkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"noteful_notes_pkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, DEFAULT, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"folder_id is not defined","level":"error"}
+{"message":"folder_id is not defined","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"knex is not a function","level":"error"}
+{"message":"knex is not a function","level":"error"}
+{"message":"knex is not a function","level":"error"}
+{"message":"knex is not a function","level":"error"}
+{"message":"knex is not a function","level":"error"}
+{"message":"knex is not a function","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"note_name\") values ($1, $2) returning * - null value in column \"folder_id\" violates not-null constraint","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"note_name is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"note is not defined","level":"error"}
+{"message":"getAllNotes is not defined","level":"error"}
+{"message":"getAllNotes is not defined","level":"error"}
+{"message":"getAllNotes is not defined","level":"error"}
+{"message":"getAllNotes is not defined","level":"error"}
+{"message":"path.posix.json is not a function","level":"error"}
+{"message":"path.posix.json is not a function","level":"error"}
+{"message":"Empty .update() call detected! Update data does not contain any values to update. This will result in a faulty query. Table: noteful_folders. Columns: folder_name.","level":"error"}
+{"message":"Empty .update() call detected! Update data does not contain any values to update. This will result in a faulty query. Table: noteful_folders. Columns: folder_name.","level":"error"}
+{"message":"Empty .update() call detected! Update data does not contain any values to update. This will result in a faulty query. Table: noteful_folders. Columns: folder_name.","level":"error"}
+{"message":"db is not defined","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - insert or update on table \"noteful_notes\" violates foreign key constraint \"noteful_notes_folder_id_fkey\"","level":"error"}
+{"message":"Empty .update() call detected! Update data does not contain any values to update. This will result in a faulty query. Table: noteful_folders. Columns: folder_name.","level":"error"}
+{"message":"Empty .update() call detected! Update data does not contain any values to update. This will result in a faulty query. Table: noteful_folders. Columns: folder_name.","level":"error"}
+{"message":"Empty .update() call detected! Update data does not contain any values to update. This will result in a faulty query. Table: noteful_notes. Columns: note_name,content,folder_id,modified.","level":"error"}
+{"message":"e is not defined","level":"error"}
+{"message":"e is not defined","level":"error"}
+{"message":"e is not defined","level":"error"}
+{"message":"e is not defined","level":"error"}
+{"message":"e is not defined","level":"error"}
+{"message":"e is not defined","level":"error"}
+{"message":"insert into \"noteful_notes\" (\"content_name\", \"folder_id\", \"note_name\") values ($1, $2, $3) returning * - column \"content_name\" of relation \"noteful_notes\" does not exist","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_folders\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"undefined\"","level":"error"}
+{"message":"select * from \"noteful_notes\" where \"id\" = $1 limit $2 - invalid input syntax for type integer: \"folders\"","level":"error"}
